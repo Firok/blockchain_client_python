@@ -26,7 +26,7 @@ def view_transaction():
 
 @app.route('/wallet/create_new', methods=['GET'])
 def create_new_wallet():
-    random_gen = Crypto.Random.new().read()
+    random_gen = Crypto.Random.new().read
     bits = 1024
     private_key = RSA.generate(bits, random_gen)
     public_key = private_key.publickey()
@@ -43,7 +43,7 @@ def generate_transaction():
     data = {'sender_address': request.form['sender_address'],
             'sender_private_key': request.form['sender_private_key'],
             'receiver_address': request.form['receiver_address'],
-            'value': request.form['value']}
+            'value': request.form['amount']}
     transaction = Transaction(data)
     response = {
         'transaction': transaction.to_dict(), 'signature': transaction.sign_transaction()
